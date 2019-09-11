@@ -49,3 +49,21 @@
   register: free_results
 
 - debug: var=free_results.stdout_lines
+
+- name: get sar stats
+  command: sar -n DEV 2 5  # noqa 301
+  register: sardev_results
+
+- debug: var=sardev_results.stdout_lines
+
+- name: get sar stats
+  command: sar -n TCP,ETCP 2 5  # noqa 301
+  register: sardev_results
+
+- debug: var=sardev_results.stdout_lines
+
+- name: get process stats
+  command: top -n 1 -b  # noqa 301
+  register: top_results
+
+- debug: var=top_results.stdout_lines
