@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: role-template
+    - role: ansible-diagnostic-report

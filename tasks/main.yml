@@ -1,0 +1,51 @@
+---
+# quick playbook to automate Netflix's "Linux Performance Analysis in 60,000 Milliseconds" https://medium.com/netflix-techblog/linux-performance-analysis-in-60-000-milliseconds-accc10403c55
+
+- name: Install SysStat
+  package:
+    name: sysstat
+    state: present
+  become: yes
+
+- name: get uptime
+  command: uptime  # noqa 301
+  register: uptime_results
+
+- debug: var=uptime_results.stdout_lines
+
+# - name: get dmesg
+#  command: dmesg  # noqa 301
+#  become: yes
+#  register: dmesg_results
+
+# - debug: var=dmesg_results.stdout_lines
+
+- name: get vmstat
+  command: vmstat  # noqa 301
+  register: vmstat_results
+
+- debug: var=vmstat_results.stdout_lines
+
+- name: get mpstat
+  command: mpstat -P ALL  # noqa 301
+  register: mpstat_results
+
+- debug: var=mpstat_results.stdout_lines
+
+- name: get pidstat
+  command: pidstat  # noqa 301
+  register: pidstat_results
+
+- debug: var=pidstat_results.stdout_lines
+
+- name: get iostat
+  command: iostat -xz  # noqa 301
+  register: iostat_results
+
+- debug: var=iostat_results.stdout_lines
+
+- name: get memory stats
+  command: free -m  # noqa 301
+  register: free_results
+
+- debug: var=free_results.stdout_lines
