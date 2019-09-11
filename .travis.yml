@@ -1,0 +1,14 @@
+---
+sudo: required
+language: python
+python: 
+  - "2.7"
+  - "3.7"
+services:
+  - docker
+before_install:
+  - sudo apt-get -qq update
+install:
+  - pip install requirements.txt
+script:
+  - molecule test
