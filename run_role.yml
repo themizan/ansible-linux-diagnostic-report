@@ -1,11 +1,11 @@
 ---
 # Play:   run_role.yml
-# Usage:  ansible-playbook -i ~/ansible/invs ~/ansible/run_role.yml -e "ROLE=<role>" -e "TARGETIP=<n.n.n.n|host@fqdn>" 
+# Usage:  ansible-playbook -i ~/ansible/invs ~/ansible/run_role.yml -e "ROLE=<role>" -e "TARGETIP=<n.n.n.n|host@fqdn>"
 # courtesy of https://groups.google.com/d/msg/ansible-project/h-SGLuPDRrs/7iCfsItYod0J
 
-- hosts:  "{{TARGETIP}}"
-  user:    ansible
-  become:    true
+- hosts: "{{TARGETIP}}"
+  user: ansible
+  become: true
 
   roles:
     - ansible-linux-diagnostic-report
